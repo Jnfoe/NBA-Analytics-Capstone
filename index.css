@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Core Typography */
+  --font-display: 'Oxanium', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Grayscale Dark Theme */
+  --background: 0 0% 5%;
+  --foreground: 0 0% 97%;
+
+  --card: 0 0% 9%;
+  --card-foreground: 0 0% 97%;
+  --card-border: 0 0% 15%;
+
+  --popover: 0 0% 9%;
+  --popover-foreground: 0 0% 97%;
+
+  /* Primary: Light gray — used for accents, active states, highlights */
+  --primary: 0 0% 80%;
+  --primary-foreground: 0 0% 6%;
+
+  /* Secondary: Mid gray */
+  --secondary: 0 0% 48%;
+  --secondary-foreground: 0 0% 97%;
+
+  /* Muted / Surface */
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 58%;
+
+  /* Accents */
+  --accent: 0 0% 15%;
+  --accent-foreground: 0 0% 97%;
+
+  /* Success & Danger — keep red/green for meaning */
+  --success: 142 71% 45%;
+  --success-foreground: 144 100% 11%;
+  --destructive: 350 89% 60%;
+  --destructive-foreground: 0 0% 97%;
+
+  --border: 0 0% 15%;
+  --input: 0 0% 15%;
+  --ring: 0 0% 65%;
+
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-foreground;
+    font-family: var(--font-body);
+    background-color: hsl(var(--background));
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-300 to-gray-400;
+  }
+
+  .glass-panel {
+    @apply bg-card/60 backdrop-blur-xl border border-white/5 shadow-2xl;
+  }
+
+  /* Micro-interactions */
+  .hover-elevate {
+    @apply transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-white/5 hover:border-white/20;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--border));
+}
